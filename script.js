@@ -1,8 +1,8 @@
-<!--const soundFiles = [
+const soundFiles = [
   "option_sound/TestSound1.mp3",
   "option_sound/Zinda.mp3",
 "option_sound/Raftaarein_Ra_One.mp3"
-];-->
+];
 
 const select = document.getElementById('soundSelector');
 const status = document.getElementById('status');
