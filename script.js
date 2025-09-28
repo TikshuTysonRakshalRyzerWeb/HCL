@@ -1,6 +1,8 @@
 const soundFiles = [
   "option_sound/TestSound1.mp3",
   "option_sound/Zinda.mp3",
+  "option_sound/Jaane_Nahi_Denge_Tujhe.mp3",
+  "option_sound/Aal_iz_well.mp3",
   "option_sound/Raftaarein_Ra_One.mp3"
 ];
 
@@ -79,31 +81,6 @@ replayBtn.addEventListener('click', () => {
   updateReplayButton();
 });
 updateReplayButton();
-
-playBtn.addEventListener('click', playSound);
-toggleBtn.addEventListener('click', togglePlayPause);    status.textContent = 'Playback finished.';
-  };
-  audio.onerror = () => {
-    status.textContent = 'Error playing the sound.';
-  };
-  audio.play().catch(e => {
-    status.textContent = 'Playback failed. Please interact with the page.';
-  });
-}
-
-function togglePlayPause() {
-  if (!audio) {
-    // If no audio loaded, play selected sound
-    playSound();
-  } else if (audio.paused) {
-    audio.play().catch(e => {
-      status.textContent = 'Playback failed. Please interact with the page.';
-    });
-  } else {
-    audio.pause();
-    status.textContent = 'Paused';
-  }
-}
 
 playBtn.addEventListener('click', playSound);
 toggleBtn.addEventListener('click', togglePlayPause);
