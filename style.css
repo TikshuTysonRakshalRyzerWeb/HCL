@@ -77,25 +77,4 @@ button:hover {
 }
 button + button {
   margin-top: 8px;
-}}
-button {
-  background: #007acc;
-  color: white;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 6px;
-  padding: 12px 0;
-  width: 100%;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-button:hover {
-  background: #005fa3;
-}
-#status {
-  margin-top: 15px;
-  font-weight: 600;
-  color: #44;
-  min-height: 24px;
-  font-size: 0.95rem;
 }
