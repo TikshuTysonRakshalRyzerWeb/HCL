@@ -1,8 +1,6 @@
 const soundFiles = [
   "option_sound/TestSound1.mp3",
   "option_sound/Zinda.mp3",
-  "option_sound/Jaane_Nahi_Denge_Tujhe.mp3",
-  "option_sound/Aal_iz_well.mp3",
   "option_sound/Raftaarein_Ra_One.mp3"
 ];
 
