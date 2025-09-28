@@ -1,13 +1,17 @@
 const soundFiles = [
   "option_sound/TestSound1.mp3",
   "option_sound/Zinda.mp3",
-"option_sound/Raftaarein_Ra_One.mp3"
+  "option_sound/Raftaarein_Ra_One.mp3"
 ];
 
 const select = document.getElementById('soundSelector');
 const status = document.getElementById('status');
 const playBtn = document.getElementById('playBtn');
 const toggleBtn = document.getElementById('toggleBtn');
+const replayBtn = document.getElementById('replayBtn');
+
+let audio;
+let autoReplay = false; // Default OFF
 
 soundFiles.forEach(file => {
   const name = file.split('/').pop();
@@ -16,8 +20,6 @@ soundFiles.forEach(file => {
   option.textContent = name;
   select.appendChild(option);
 });
-
-let audio;
 
 function playSound() {
   const selectedFile = select.value;
@@ -35,6 +37,51 @@ function playSound() {
   };
   audio.onended = () => {
     status.textContent = 'Playback finished.';
+    if (autoReplay) {
+      audio.currentTime = 0;
+      audio.play().catch(e => {
+        status.textContent = 'Playback failed. Please interact with the page.';
+      });
+    }
+  };
+  audio.onerror = () => {
+    status.textContent = 'Error playing the sound.';
+  };
+  audio.play().catch(e => {
+    status.textContent = 'Playback failed. Please interact with the page.';
+  });
+}
+
+function togglePlayPause() {
+  if (!audio) {
+    playSound();
+  } else if (audio.paused) {
+    audio.play().catch(e => {
+      status.textContent = 'Playback failed. Please interact with the page.';
+    });
+  } else {
+    audio.pause();
+    status.textContent = 'Paused';
+  }
+}
+
+function updateReplayButton() {
+  if (autoReplay) {
+    replayBtn.textContent = "Replay: ON";
+    replayBtn.classList.add('active');
+  } else {
+    replayBtn.textContent = "Replay: OFF";
+    replayBtn.classList.remove('active');
+  }
+}
+replayBtn.addEventListener('click', () => {
+  autoReplay = !autoReplay;
+  updateReplayButton();
+});
+updateReplayButton();
+
+playBtn.addEventListener('click', playSound);
+toggleBtn.addEventListener('click', togglePlayPause);    status.textContent = 'Playback finished.';
   };
   audio.onerror = () => {
     status.textContent = 'Error playing the sound.';
