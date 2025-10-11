@@ -4,8 +4,8 @@ import java.net.*;
 public class mys {
     public static void main(String args[]){
         Scanner sc=new Scanner(System.in);
-        int port =sc.nextInt();
-       try(ServerSocket s=new ServerSocket(port)){
+        
+       try(ServerSocket s=new ServerSocket(80098)){
            System.out.println("Provide tge Port to a Friend to invite him to play with you");
            Socket friend=s.accept();
            
